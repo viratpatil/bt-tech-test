@@ -1,0 +1,140 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  width: 50px;
+  pointer-events: none;
+  margin:5px;
+}
+
+.App-header {
+  background-color: #5514b4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  position: fixed;
+  left:0px;
+  top: 0px;
+  width: 100%;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.App-content{
+  margin-top: 120px;
+  margin-bottom: 63px;
+  padding: 15px;
+  text-align: left;
+}
+
+.App-footer{
+  position: fixed;
+  left:0px;
+  bottom: 0px;
+  width: 100%;
+  background-color: #5514b4;
+  color: white;
+}
+
+.Article-img {
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+}
+
+.Article-Card {
+  margin: 0 auto;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  padding: 10px;
+  max-width: 500px;
+}
+
+.Article-Card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.search-field {
+  position: fixed;
+  width: 100%;
+  top: 60px;
+  text-align: center;
+  background: #ececec;
+  padding: 15px;
+  left:  0px;
+}
+
+.search-text {
+  width: 100%;
+  max-width: 500px;
+}
+
+
+/* 
+  Bootstrap css
+*/
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none; }
+
+a {
+  color: #fff; }
+  a:hover {
+    text-decoration: none; }
+
+p, span {
+  color: #333333;
+}
+
+.btn-link:focus, .btn-link:hover {
+  text-decoration: none; }
+
+body {
+  font: 100% "Calibri", sans-serif;
+  color: #333333;
+  font-size: 13px; }
+
+.bg-purple {
+  background-color: #5514b4;
+  color: #ffffff; }
+
+.app-container {
+  margin-top: 130px;
+  margin-bottom: 80px; }
+
+.searchbox.form-inline .form-control {
+  width: auto; }
+
+.card {
+  margin-bottom: 30px;
+  min-height: 450px; 
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-top: solid 1px #ececec;
+  background-color: #ffffff; }
+  footer h6 {
+    font-size: 11px; }
+
+.more-btn {
+  position: absolute;
+  bottom: 15px;
+  left: 10px;
+}
+
+@media (min-width: 992px) {
+  .app-container {
+    margin-top: 80px; } }
