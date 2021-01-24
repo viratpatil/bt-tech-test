@@ -18,6 +18,8 @@ function NewsFeedBoot(props) {
           const articles = parseData(response);
           if (articles.length === 0) {
             setMessage('No Records Found');
+          } else {
+            setMessage('');
           } 
           setNewsArticles(articles);  
         } else {
@@ -47,6 +49,8 @@ function NewsFeedBoot(props) {
         const articles = parseData(response);
         if (articles.length === 0) {
           setMessage('No Records Found');
+        } else {
+          setMessage('');
         }
         setNewsArticles(articles);  
       } else {

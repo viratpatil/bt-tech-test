@@ -35,6 +35,8 @@ function News() {
               setNewsArticles(articles); 
               if (articles.length === 0) {
                 setMessage('No Records Found');
+              } else {
+                setMessage('');
               } 
             } else {
                 // Default Top Entries in Case of error code: rateLimited;
@@ -60,6 +62,8 @@ function News() {
           setNewsArticles(articles);
           if (articles.length === 0) {
             setMessage('No Records Found');
+          } else {
+            setMessage('');
           }    
         } else {
           // Default Top Entries in Case of error code: rateLimited;
