@@ -17,6 +17,7 @@ function debounce(func, wait) {
 function News() {
     const [newsArticles, setNewsArticles] = useState([]);
     const [searchText, setSearchText] = useState('');
+    const [message, setMessage] = useState('');
     const onInputChange = (e) => {
       if (e) {
         setSearchText(e);
@@ -32,8 +33,19 @@ function News() {
             if (response && response.articles) {
               const articles = parseData(response);
               setNewsArticles(articles); 
+              if (articles.length === 0) {
+                setMessage('No Records Found');
+              } 
             } else {
-                setNewsArticles([]);   
+                // Default Top Entries in Case of error code: rateLimited;
+                if (response && response.status === 'error' && response.code === "rateLimited") {
+                  // const articles = parseData(topEntries);
+                  // setNewsArticles(articles);  
+                  setMessage('You have made too many requests recently');
+                } else {
+                  setMessage('No Records Found');
+                } 
+                setNewsArticles([]); 
             }
         })
     }
@@ -46,13 +58,18 @@ function News() {
         if (response && response.articles) {
           const articles = parseData(response);
           setNewsArticles(articles);
-              
+          if (articles.length === 0) {
+            setMessage('No Records Found');
+          }    
         } else {
           // Default Top Entries in Case of error code: rateLimited;
           if (response && response.status === 'error' && response.code === "rateLimited") {
-            const articles = parseData(topEntries);
-            setNewsArticles(articles);  
+            // const articles = parseData(topEntries);
+            // setNewsArticles(articles);  
+            setMessage('You have made too many requests recently');
+            setNewsArticles([]);
           } else {
+            setMessage('No Records Found');
             setNewsArticles([]);  
           } 
         }
@@ -73,6 +90,7 @@ function News() {
         {newsArticles.map((article) => {
             return <NewsCard article={article} key={article.url}></NewsCard>
         })}
+        {message.length > 0 && <h3 className="message-text">{message}</h3>}
       </div>
     </div>
 }

@@ -76,6 +76,10 @@ $bt-color: #5514b4;
   max-width: 500px;
 }
 
+.message-text {
+  text-align: center;
+}
+
 
 /* 
   Bootstrap css
@@ -92,7 +96,7 @@ a {
   a:hover {
     text-decoration: none; }
 
-p, span {
+p, span, h1, h2, h3 {
   color: #333333;
 }
 

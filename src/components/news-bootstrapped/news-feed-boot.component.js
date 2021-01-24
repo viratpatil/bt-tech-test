@@ -4,6 +4,7 @@ import NewsBoot from "./news-boot.component";
 
 function NewsFeedBoot(props) {
   const [newsArticles, setNewsArticles] = useState([]);
+  const [message, setMessage] = useState('');
   let searchText = ''
   const onSearchClick = () => {
 
@@ -15,8 +16,19 @@ function NewsFeedBoot(props) {
       }).then((response) => {
         if (response && response.articles) {
           const articles = parseData(response);
+          if (articles.length === 0) {
+            setMessage('No Records Found');
+          } 
           setNewsArticles(articles);  
         } else {
+           // Default Top Entries in Case of error code: rateLimited;
+           if (response && response.status === 'error' && response.code === "rateLimited") {
+            // const articles = parseData(topEntries);
+            // setNewsArticles(articles);  
+            setMessage('You have made too many requests recently');
+          } else {
+            setMessage('No Records Found');
+          } 
           setNewsArticles([]);   
         }  
       })
@@ -33,15 +45,20 @@ function NewsFeedBoot(props) {
     }).then((response) => {
       if (response && response.articles) {
         const articles = parseData(response);
+        if (articles.length === 0) {
+          setMessage('No Records Found');
+        }
         setNewsArticles(articles);  
       } else {
         // Default Top Entries in Case of error code: rateLimited;
         if (response && response.status === 'error' && response.code === "rateLimited") {
-          const articles = parseData(topEntries);
-          setNewsArticles(articles);  
+          // const articles = parseData(topEntries);
+          // setNewsArticles(articles);  
+          setMessage('You have made too many requests recently');
         } else {
-          setNewsArticles([]);  
-        }   
+          setMessage('No Records Found');
+        } 
+        setNewsArticles([]);   
       }
   })
   }
@@ -73,6 +90,7 @@ function NewsFeedBoot(props) {
         <div className="row">
           <div className="col-md-12">
               <NewsBoot articles={newsArticles}></NewsBoot>
+              {message.length > 0 && <h3 className="message-text">{message}</h3>}
           </div>
         </div>
       </div>
