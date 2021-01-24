@@ -1,5 +1,5 @@
 import { BrowserRouter, Route } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 import NewsFeedBoot from './components/news-bootstrapped/news-feed-boot.component';
 import NewsFeed from './components/news-javascript/news-feed.component';
 // d4625325f1274be0a38ab6cbb8cf1 489  

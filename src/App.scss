@@ -1,3 +1,5 @@
+$bt-color: #5514b4;
+
 .App {
   text-align: center;
 }
@@ -9,7 +11,7 @@
 }
 
 .App-header {
-  background-color: #5514b4;
+  background-color: $bt-color;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,7 +40,7 @@
   left:0px;
   bottom: 0px;
   width: 100%;
-  background-color: #5514b4;
+  background-color: $bt-color;
   color: white;
 }
 
@@ -54,10 +56,9 @@
   border-radius: 5px;
   padding: 10px;
   max-width: 500px;
-}
-
-.Article-Card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  &:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
 }
 
 .search-field {
@@ -104,7 +105,7 @@ body {
   font-size: 13px; }
 
 .bg-purple {
-  background-color: #5514b4;
+  background-color: $bt-color;
   color: #ffffff; }
 
 .app-container {

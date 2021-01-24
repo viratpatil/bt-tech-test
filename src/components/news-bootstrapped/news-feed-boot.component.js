@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { parseData, topEntries } from "../../util/utility";
 import NewsBoot from "./news-boot.component";
 
 function NewsFeedBoot(props) {
@@ -13,24 +14,10 @@ function NewsFeedBoot(props) {
         return res.json();
       }).then((response) => {
         if (response && response.articles) {
-          const articles = response.articles.map((article) => {
-          
-            article.description = (article.description && article.description.length > 150) ?
-             `${article.description.substring(0, 150)}...`: article.description; 
-            
-            article.author = (article.author && article.author.length > 100) ?   
-            `${article.author.substring(0, 100)}...` : article.author ;
-            
-  
-            article.urlToImage = (article.urlToImage && article.urlToImage.length > 0) ? article.urlToImage :
-            'https://educationresearch.uci.edu/wp-content/uploads/2018/10/uci-news-placeholder-default-720x480-e1539120657160.jpg';
-          
-            return article;
-          });
-
+          const articles = parseData(response);
           setNewsArticles(articles);  
         } else {
-            setNewsArticles([]);   
+          setNewsArticles([]);   
         }  
       })
     }
@@ -45,26 +32,16 @@ function NewsFeedBoot(props) {
       return res.json();
     }).then((response) => {
       if (response && response.articles) {
-        const articles = response.articles.map((article) => {
-          
-          article.description = (article.description && article.description.length > 150) ?
-           `${article.description.substring(0, 150)}...`: article.description; 
-          
-          article.author = (article.author && article.author.length > 100) ?   
-          `${article.author.substring(0, 100)}...` : article.author ;
-          
-
-          article.urlToImage = (article.urlToImage && article.urlToImage.length > 0) ? article.urlToImage :
-          'https://educationresearch.uci.edu/wp-content/uploads/2018/10/uci-news-placeholder-default-720x480-e1539120657160.jpg';
-        
-          return article;
-        });
-
-        console.log(articles);
-
+        const articles = parseData(response);
         setNewsArticles(articles);  
       } else {
-          setNewsArticles([]);   
+        // Default Top Entries in Case of error code: rateLimited;
+        if (response && response.status === 'error' && response.code === "rateLimited") {
+          const articles = parseData(topEntries);
+          setNewsArticles(articles);  
+        } else {
+          setNewsArticles([]);  
+        }   
       }
   })
   }
