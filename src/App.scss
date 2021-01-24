@@ -60,6 +60,9 @@ $bt-color: #5514b4;
   &:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   }
+  h2 {
+    word-wrap: break-word;
+  }
 }
 
 .search-field {
