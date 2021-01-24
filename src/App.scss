@@ -47,6 +47,7 @@ $bt-color: #5514b4;
 .Article-img {
   width: 100%;
   border-radius: 5px 5px 0 0;
+  max-height: 250px;
 }
 
 .Article-Card {
@@ -121,7 +122,10 @@ body {
 
 .card {
   margin-bottom: 30px;
-  min-height: 450px; 
+  min-height: 450px;
+  img{
+    max-height: 250px;
+  } 
 }
 
 footer {
